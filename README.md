@@ -1,3 +1,5 @@
+[🇬🇧 Click here to read in English](#english-version)
+
 # 데이터 덩어리들을 패브릭으로 원클릭 파이프라인 구축하기
 
 ## 📖 서론: 시선 포커싱
@@ -81,36 +83,85 @@ Fabric으로 할 수 있는 일은 무궁무진합니다.
 
 세션이 끝난 뒤에도 꼭 한 번 접속하셔서 직접 경험해 보시고 느껴보시길 바랍니다. 감사합니다.
 
+<br><br>
+
 ---
-<br>
 
-<a name="english-version"></a>
-# The Secret of Chocopies Sold Out During Hurricanes
-**Building a 20-Minute End-to-End Data Pipeline with Microsoft Fabric**
+<div id="english-version"></div>
 
-## Session Overview
-Internal company data alone often fails to reveal the 'true cause' of business trends, and integrating external data typically requires overcoming a high engineering barrier. 
-This session features a live demo of building an **enterprise-grade data pipeline (ETL)** from scratch in just 20 minutes using Microsoft Fabric—without deploying servers or writing complex code.
+# 🇬🇧 Building a One-Click Pipeline from Raw Data Chunks with Microsoft Fabric
 
-We will merge 500,000 rows of internal sales data with external weather data to uncover why Pop-Tarts (often compared to "American Chocopies") are the first items to sell out when a hurricane approaches. Discover how seamlessly connected data can independently reveal hidden business insights!
+## 📖 Introduction: Hook
+Before diving into the main content, let’s start with a fascinating story.
 
-## Key Takeaways
-- **Democratization of Engineering:** Clean and merge massive datasets using a visual interface without writing Python or SQL code.
-- **The Power of Unified Storage:** See how data ingestion, transformation, and loading flow as a single stream on top of **OneLake**, Fabric's unified storage.
-- **Seamless E2E Pipeline:** Experience a true End-to-End workflow where processed data flows instantly into interactive Power BI visualizations without any physical data movement.
+In 2004, the New York Times published a highly interesting article featuring the word "Hurricane." The protagonist of the story was **Walmart**. The retail giant was contemplating what items to place at the front of their stores in preparation for the approaching Hurricane Frances.
 
-## Architecture & Workflow
+Walmart's executives had an idea: *"Let's leverage our 460TB of data."* They pushed forward with the analysis, and the result was surprisingly simple: **Strawberry Pop-Tarts** (a beloved national snack, similar to *Choco Pie* in Korea).
 
-This project is built on a 4-step E2E pipeline:
+Through data analysis, Walmart discovered a pattern from previous hurricanes: customers tended to hoard this specific snack, leading to a 7-fold increase in sales. Consequently, when Hurricane Frances hit, they placed Strawberry Pop-Tarts prominently at the front of their stores, securing a massive profit.
 
-1. **Extract (Data Ingestion):** - Import 500,000 rows of local store sales data (CSV) and public US weather data (Web/GitHub URL) into the platform.
-2. **Transform (Data Factory):** - Utilize `Data Factory (Dataflow Gen2)` to format dates and JOIN two massive datasets with a single click—entirely no-code.
-3. **Load (Lakehouse Storage):** - Load the refined, integrated data into a `Lakehouse` built on `OneLake` as an analytics-optimized **Delta Table**.
-4. **Analyze (Serving & Visualization):** - Leverage `Direct Lake` technology via the `Semantic Model` to query raw data in real-time. Finally, use `Power BI`'s interactive charts to visually prove the exact correlation between hurricane events and sales spikes.
+However, the fundamental background that made this possible back then was **massive capital and manpower**. It was a privilege reserved for giant corporations like Walmart.
 
-## 🛠️ Tech Stack Used
-- **Platform:** Microsoft Fabric (SaaS)
-- **Workloads:**
-  - Data Factory (ETL & Data Integration)
-  - Data Engineering (Lakehouse, OneLake Unified Storage)
-  - Power BI (Data Visualization & Semantic Model)
+Fast forward to 2026. The barriers once held up by sheer money and human resources have collapsed. Now, anyone who knows how to handle a data analytics system can uncover these insights. Today, I will introduce you to that revolutionary system: **Microsoft Fabric**.
+
+---
+
+## 🛠️ Main Part 1: What is Microsoft Fabric?
+**Fabric** is a powerful **unified data platform** that operates as a SaaS (Software-as-a-Service) and utilizes a Lakehouse architecture.
+
+### Understanding Cloud Service Tiers
+To understand Fabric, let's briefly look at the three tiers of cloud services:
+* **IaaS** (Infrastructure-as-a-Service)
+* **PaaS** (Platform-as-a-Service)
+* **SaaS** (Software-as-a-Service)
+
+Moving from IaaS to SaaS means less coding is required, making it easier for anyone to get started. SaaS, in particular, is a complete software solution that runs directly in a web browser without the need for installation. **Fabric falls right into this SaaS tier.** (Just like Microsoft 365, which we use every day.)
+
+Furthermore, it is called a "unified data platform" because various data-related Azure systems (PaaS) are gathered within this single platform. In Fabric, these tools are referred to as **'Workloads.'** You can seamlessly use workloads such as:
+* Data Engineering
+* Data Factory
+* Data Science
+* Power BI, and more.
+
+---
+
+## 🗄️ Main Part 2: The Evolution of Storage Architecture
+How has the 'storage'—the core of a data platform—evolved over time?
+
+### 1st Generation - Data Warehouse
+This is the earliest form of storage. It boasts strong ACID transaction compliance and is optimized for high-performance SQL analysis and BI (Business Intelligence). However, its limitation was that it struggled to store unstructured data, handling mainly structured data like Excel files.
+
+### 2nd Generation - Data Lake
+The Data Lake emerged to compensate for the shortcomings of the 1st generation. It could store anything—text, images, and videos—making it highly optimized for AI and ML training. But it had a fatal flaw: without a proper management system, continuously pouring data into it turned it into a **'Data Swamp' (or Garbage Dump)**. Issues like lost governance and degraded data reliability forced an upgrade to the 3rd generation.
+
+### 3rd Generation - Data Lakehouse ★
+This is the state-of-the-art storage architecture currently used by default in Fabric. It combines only the strengths of the 1st and 2nd generations. It can flexibly store any type of data while perfectly integrating the **management systems** that the 2nd generation lacked.
+* **Key Features:** Transaction guarantees, schema enforcement, step-by-step data quality management, etc.
+
+Through this, it evolved into a form that offers both high-performance SQL analysis and robust data reliability.
+
+---
+
+## 🎬 Main Part 3: Demo Flow
+*(To ensure a smooth presentation, loading times will be skipped using pre-recorded video materials.)*
+
+* **[Step 1] Data Ingestion:** Demonstrating the direct upload of internal company data (sales records CSV) to the Lakehouse, and pulling external data (weather information) via URL.
+* **[Step 2] Building Pipelines & Factory:** Utilizing Data Factory to preprocess and JOIN the two datasets stored in the Lakehouse.
+* **[Step 3] Visualization (Power BI):** Visualizing the final insights using line charts and slicers based on the processed data.
+* **⭐ [Step 4] End-to-End Automation (Core Highlight):** Steps 1 to 3 are tedious processes that data workers typically have to repeat every morning. I will show you the innovative experience of **automating all these cumbersome tasks with a 'single click'** by building a data pipeline, allowing the data to flow and update autonomously.
+
+---
+
+## 💡 Conclusion
+
+While preparing for this session and studying Microsoft Fabric, one thought continuously crossed my mind:
+**"This is the smartphone of the data analytics world."**
+
+If someone asked you to explain a 'smartphone,' how would you do it? Even two hours wouldn't be enough to cover all its features. The same goes for Microsoft Fabric.
+
+The possibilities with Fabric are endless. Currently, countless companies across various sectors—**education, industry, manufacturing, healthcare**—are adopting Fabric to maximize work efficiency and boost revenue. *(Source: [Microsoft Fabric Customer Stories](https://www.microsoft.com/en-us/customers/search?filters=product%3Aazure%2Fmicrosoft-fabric&sortBy=PublishedDate+Desc))*
+
+Just as you download and use different applications on a smartphone, I hope you experience the power of selecting and connecting the right workloads for your business needs. Furthermore, if you adopt this massive enterprise platform in your company, a paid subscription (F64 capacity or higher) activates **'Copilot.'** This powerful AI feature allows you to command the AI to perform the countless tasks you previously had to ponder and click through manually.
+
+### 🔗 Call To Action
+As I mentioned, it’s impossible to explain everything about this "smartphone-like" platform in just 30 minutes. Therefore, I have prepared the
